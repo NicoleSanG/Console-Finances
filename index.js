@@ -171,7 +171,13 @@ for (var i = 1; i < finances.length; i++) {
   }
 }
 
-console.log(netProfit);
-console.log(greatestIncrease);
-console.log(greatestDecrease);
+average = totalChange / (finances.length - 1);
 
+
+console.log("Financial Analysis");
+console.log("-----------------------");
+console.log("Total Months: " + totalMonths);
+console.log("Total: $" + netProfit);
+console.log("Average Change: $" + Math.round((average * 100)) / 100);
+console.log("Greatest Increase in Profits/Losses: $" + greatestIncrease);
+console.log("Greatest Decrease in Profits/Losses: $" + greatestDecrease);
