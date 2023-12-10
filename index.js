@@ -92,29 +92,29 @@ var finances = [
 // Your task is to write JavaScript code that analyzes the records to calculate each of the following:
 
 // The total number of months included in the dataset.
-  // finances.length
+// finances.length
 
 // The net total amount of Profit / Losses over the entire period.
-  // Need a variable for Profits/Losses
-  // Need to be able to compare the data for the loop that we're on to the data from the previous loop
-    // Need variables for current & previous once we start the loop
-    // Need an if statement to make sure we're on at least month 2 (array index 1) before starting to figure profits & losses
+// Need a variable for Profits/Losses
+// Need to be able to compare the data for the loop that we're on to the data from the previous loop
+// Need variables for current & previous once we start the loop
+// Need an if statement to make sure we're on at least month 2 (array index 1) before starting to figure profits & losses
 
 // The average of the changes in Profit / Losses over the entire period.
-  // Need a variable to track the average change
-  // That will make use of the current & previous variables we set up before
+// Need a variable to track the average change
+// That will make use of the current & previous variables we set up before
 // You will need to track what the total change in Profit / Losses are from month to month and then find the average.
 // (Total / (Number of months - 1))
 
 // The greatest increase in Profit / Losses(date and amount) over the entire period.
-  // Need a variable for the greatest increase
-  // On each iteration, compare the current change in profits/losses to what's currently stored
-  // If the change is more, replace what's currently stored in the variable
+// Need a variable for the greatest increase
+// On each iteration, compare the current change in profits/losses to what's currently stored
+// If the change is more, replace what's currently stored in the variable
 
 // The greatest decrease in Profit / Losses(date and amount) over the entire period.
-  // Need a variable for the greatest decrease
-  // On each iteration, compare the current change in profits/losses to what's currently stored
-  // If the loss is greater, replace what's currently stored in the variable
+// Need a variable for the greatest decrease
+// On each iteration, compare the current change in profits/losses to what's currently stored
+// If the loss is greater, replace what's currently stored in the variable
 
 // variables:
 // total number of months
@@ -132,19 +132,46 @@ var finances = [
 var totalMonths = finances.length
 console.log("Total Months:  " + totalMonths);
 // total of profits
-var totalProfits = 0;
+var totalChange = 0;
 
 //greatest increase (month & amt)
-var greatestIncrease = 0;
+var increase = 0;
 
 //greatest loss (month & amt)
- 
-var greatestLoss = 0;
+
+var decrease = finances[0][1];
 
 //average of the changes
 var average = 0;
 
 
+//net total amount of profit/loss
+//loop through array
+//it will start counting from the first month and sum them together
+// variables declared inside the loop:
+// current data point
+// previous data point
+var netProfit = finances[0][1]
+var previousData = netProfit;
 
+for (var i = 1; i < finances.length; i++) {
+  netProfit = netProfit + finances[i][1];
+  change = finances[i][1] - previousData;
+  if (increase > change) {
+    var greatestIncrease = increase;
+  } else {
+    increase = change;
+  }
+  totalChange = totalChange + change;
+  previousData = finances[i][1];
+  if (decrease < change) {
+    var greatestDecrease = decrease;
+  } else {
+    decrease = change;
+  }
+}
 
- //total amount of Profit/Losses over the entire period
+console.log(netProfit);
+console.log(greatestIncrease);
+console.log(greatestDecrease);
+
