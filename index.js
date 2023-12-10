@@ -126,3 +126,25 @@ var finances = [
 // variables declared inside the loop:
 // current data point
 // previous data point
+
+
+//total number of months
+var totalMonths = finances.length
+console.log("Total Months:  " + totalMonths);
+// total of profits
+var totalProfits = 0;
+
+//greatest increase (month & amt)
+var greatestIncrease = 0;
+
+//greatest loss (month & amt)
+ 
+var greatestLoss = 0;
+
+//average of the changes
+var average = 0;
+
+
+
+
+ //total amount of Profit/Losses over the entire period
