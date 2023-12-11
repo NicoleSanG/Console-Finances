@@ -134,8 +134,11 @@ var totalMonths = finances.length
 var totalChange = 0;
 //greatest increase (month & amt)
 var increase = 0;
+
 //greatest loss (month & amt)
+
 var decrease = finances[0][1];
+
 //average of the changes
 var average = 0;
 
