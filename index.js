@@ -128,54 +128,50 @@ var finances = [
 // previous data point
 
 
-//total number of months
-var totalMonths = finances.length
-// total of profits
+var totalMonths = finances.length;
+var netProfit = 0;
 var totalChange = 0;
-//greatest increase (month & amt)
-var increase = 0;
+var greatestIncrease = {
+  amount: 0,
+  month: ''
+};
+var greatestDecrease = {
+  amount: 0,
+  month: ''
+};
 
-//greatest loss (month & amt)
-
-var decrease = finances[0][1];
-
-//average of the changes
-var average = 0;
-
-
-//net total amount of profit/loss
-//loop through array
-//it will start counting from the first month and sum them together
-// variables declared inside the loop:
-// current data point
-// previous data point
-var netProfit = finances[0][1]
-var previousData = netProfit;
+// Loop through the array starting from the second element
+// Accumulate total profit/loss
+// Calculate the change from the previous month
+// Accumulate total of change
+// Update greatestIncrease if the current change is greater
+// Update greatestDecrease if the current change is smaller
 
 for (var i = 1; i < finances.length; i++) {
+
   netProfit = netProfit + finances[i][1];
-  change = finances[i][1] - previousData;
-  if (increase > change) {
-    var greatestIncrease = increase;
-  } else {
-    increase = change;
-  }
+
+  var change = finances[i][1] - finances[i - 1][1];
+
   totalChange = totalChange + change;
-  previousData = finances[i][1];
-  if (decrease < change) {
-    var greatestDecrease = decrease;
-  } else {
-    decrease = change;
+
+  if (change > greatestIncrease.amount) {
+    greatestIncrease.amount = change;
+    greatestIncrease.month = finances[i][0];
+  }
+
+  if (change < greatestDecrease.amount) {
+    greatestDecrease.amount = change;
+    greatestDecrease.month = finances[i][0];
   }
 }
 
-average = totalChange / (finances.length - 1);
-
+var average = totalChange / (finances.length - 1);
 
 console.log("Financial Analysis");
-console.log("-----------------------");
+console.log("--------------------------");
 console.log("Total Months: " + totalMonths);
 console.log("Total: $" + netProfit);
 console.log("Average Change: $" + Math.round((average * 100)) / 100);
-console.log("Greatest Increase in Profits/Losses: $" + greatestIncrease);
-console.log("Greatest Decrease in Profits/Losses: $" + greatestDecrease);
+console.log("Greatest Increase in Profits/Losses: " + greatestIncrease.month + " ($" + greatestIncrease.amount + ")");
+console.log("Greatest Decrease in Profits/Losses: " + greatestDecrease.month + " ($" + greatestDecrease.amount + ")");
