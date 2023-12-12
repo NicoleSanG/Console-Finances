@@ -16,7 +16,13 @@ Code for analyzing the financial records of a fictional company with JavaScript.
 Deployed project URL: 
 https://nicolesang.github.io/Console-Finances/
 
+This screenshot shows how the console will display the results:
+
+![Desktop view](images/financeresults.png)
+
+This screenshot shows the code:
 ![Desktop view](images/finances.png)
+
 
 
 ## License
